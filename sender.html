@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sender Page</title>
+</head>
+<body>
+    <h1>Sender Page</h1>
+    <label for="textInput">Enter Text:</label>
+    <input type="text" id="textInput">
+    <button onclick="sendMessage()">Send Text</button>
+
+    <script>
+        function sendMessage() {
+            var textInput = document.getElementById('textInput').value;
+            window.postMessage({ type: 'text', data: textInput }, '*');
+        }
+    </script>
+</body>
+</html>
