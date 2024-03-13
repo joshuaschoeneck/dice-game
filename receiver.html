@@ -16,6 +16,7 @@
             if (event.data && event.data.type === 'text') {
                 var displayText = document.getElementById('displayText');
                 displayText.innerHTML = 'Received Text: ' + event.data.data;
+                alert('Received Text: ' + event.data.data);
             }
         }
     </script>
