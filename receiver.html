@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver Page</title>
+</head>
+<body>
+    <h1>Receiver Page</h1>
+    <div id="displayText"></div>
+
+    <script>
+        window.addEventListener('message', receiveMessage, false);
+
+        function receiveMessage(event) {
+            if (event.data && event.data.type === 'text') {
+                var displayText = document.getElementById('displayText');
+                displayText.innerHTML = 'Received Text: ' + event.data.data;
+            }
+        }
+    </script>
+</body>
+</html>
