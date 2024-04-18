@@ -5,6 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sender Page</title>
+    <style>
+      table {
+          border-collapse: collapse;
+          width: 100%;
+      }
+  
+      th, td {
+          border: 1px solid #dddddd;
+          text-align: center;
+          padding: 8px;
+      }
+  
+      th {
+          background-color: #f2f2f2;
+      }
+  
+      button {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+      }
+  </style>
 </head>
 <body>
     <h1>Sender Page</h1>
@@ -12,13 +34,50 @@
     <input type="text" id="textInput">
     <button onclick="sendMessage()">Send Text</button>
 
+     <table style="width: 20%">
+      <tr>
+        <td colspan=3>Dice 1</td>
+      </tr>  
+      <tr>
+          <td><button>1</button></td>
+          <td><button>2</button></td>
+          <td><button>3</button></td>
+        </tr>
+        <tr>
+          <td><button>4</button></td>
+          <td><button>5</button></td>
+          <td><button>6</button></td>
+        </tr>
+      </table>
+    
+      
+
   <script>
-    function sendMessage() {
+    function sendMessage(target,value) {
       const otherWindow = window.open('receiver.html');
       const message = document.getElementById('textInput').value;
       const targetOrigin = 'https://github.com.com';
+      messa
       otherWindow.postMessage(message, targetOrigin);
     }
+
+    function sendMessageToReceiver() {
+    // Define the target window
+    var targetWindow = window.open('receiver.html', '_blank');
+
+    // Check if the target window is opened
+    if (targetWindow) {
+        // Define the variables to be sent
+        var target = "example_target";
+        var value = "example_value";
+
+        // Send the variables to the receiver.html page with the specified target origin
+        targetWindow.postMessage({ target: target, value: value }, 'https://github.com');
+    } else {
+        console.error('Failed to open receiver.html');
+    }
+}
+}
   </script>
 
 
