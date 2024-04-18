@@ -72,7 +72,9 @@
         var value = "example_value";
 
         // Send the variables to the receiver.html page with the specified target origin
-        targetWindow.postMessage({ target: target, value: value }, 'https://github.com');
+        //targetWindow.postMessage({ target: target, value: value }, 'https://github.com');
+        //targetWindow.postMessage({ target: target, value: value }, 'https://https://joshuaschoeneck.github.io/');
+        targetWindow.postMessage({ target: target, value: value }, 'https://5501-joshuaschoenec-dicegame-p1m8jj66nyt.ws-us110.gitpod.io/');
     } else {
         console.error('Failed to open receiver.html');
     }
