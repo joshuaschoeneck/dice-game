@@ -9,12 +9,19 @@
   <button onclick="sendMessage()">Send Message</button>
 
   <script>
+    var win2;
     function sendMessage() {
-      const otherWindow = window.open('origin2.html');
-      const message = 'Hello from Origin 1!';
+        win2=open('origin2.html');
+            }
+    function abc() {
+     win2.document.body.style.backgroundColor = "red";
+    }
 
-      otherWindow.postMessage(message);
+    function def() {
+        win2.document.getElementById('abc').innerHTML = 'Hello';
     }
   </script>
+
+
 </body>
 </html>

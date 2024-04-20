@@ -22,81 +22,205 @@
       }
   
       button {
-          width: 100%;
-          padding: 10px;
+          
+          padding: 5px;
           font-size: 16px;
       }
   </style>
-</head>
-<body>
-    <h1>Sender Page</h1>
-    <label for="textInput">Enter Text:</label>
-    <input type="text" id="textInput">
-    <button onclick="sendMessage()">Send Text</button>
-
-     <table style="width: 20%">
-      <tr>
-        <td colspan=3>Dice 1</td>
-      </tr>  
-      <tr>
-          <td><button>1</button></td>
-          <td><button>2</button></td>
-          <td><button>3</button></td>
-        </tr>
-        <tr>
-          <td><button>4</button></td>
-          <td><button>5</button></td>
-          <td><button>6</button></td>
-        </tr>
-      </table>
-      <input type="text" id="messageInput" placeholder="Enter your message">
-    <button onclick="openSenderPopup()">Open Sender</button>
-
-    <script>
-        var senderPopup;
-
-        function openSenderPopup() {
-            senderPopup = window.open("sender.html", "senderPopup", "width=400,height=400");
-        }
-
-        function sendMessage() {
-            var messageInput = document.getElementById("messageInput");
-            var message = messageInput.value;
-            senderPopup.postMessage(message, "*");
-        }
-    </script>
-      
-
   <script>
-    function OLDsendMessage(target,value) {
-      const otherWindow = window.open('receiver.html');
-      const message = document.getElementById('textInput').value;
-      const targetOrigin = 'https://github.com.com';
-      messa
-      otherWindow.postMessage(message, targetOrigin);
+    var receiverWin;
+    var price1;
+    var price2;
+    var price3;
+    var price4;
+    var price5;
+    function openReceiverWin() {
+      receiverWin = open('receiver.html');
+            }
+    
+    function changeDigit(id,digit) {
+      var digImg = '';
+      if (digit == 1) {
+          digImg = 'one.png';
+      } else if (digit == 2) {
+          digImg = 'two.png';
+      } else if (digit == 3) {
+          digImg = 'three.png';
+      } else if (digit == 4) {
+          digImg = 'four.png';
+      } else if (digit == 5) {
+          digImg = 'five.png';
+      } else if (digit == 6) {
+          digImg = 'six.png';
+      }
+
+      if (digit==0) {
+        receiverWin.document.getElementById(id).style.backgroundImage = "url('none')";
+      } else {
+        receiverWin.document.getElementById(id).style.backgroundImage = "url('" + digImg + "')";
+      }
+    }
+      
+    function checkPrice() {
+      //check that the digits are in the correct range
     }
 
-    function sendMessageToReceiver() {
-    // Define the target window
-    var targetWindow = window.open('receiver.html', '_blank');
-
-    // Check if the target window is opened
-    if (targetWindow) {
-        // Define the variables to be sent
-        var target = "example_target";
-        var value = "example_value";
-
-        // Send the variables to the receiver.html page with the specified target origin
-        //targetWindow.postMessage({ target: target, value: value }, 'https://github.com');
-        //targetWindow.postMessage({ target: target, value: value }, 'https://https://joshuaschoeneck.github.io/');
-        targetWindow.postMessage({ target: target, value: value }, 'https://5501-joshuaschoenec-dicegame-p1m8jj66nyt.ws-us110.gitpod.io/');
-    } else {
-        console.error('Failed to open receiver.html');
+    function loadPrice() {
+      price1 = document.getElementById('price1').value;
+      price2 = document.getElementById('price2').value;
+      price3 = document.getElementById('price3').value;
+      price4 = document.getElementById('price4').value;
+      price5 = document.getElementById('price5').value;
     }
-}
+
+    function showFirstDigit() {
+      changeDigit('middle-digit',price1);
+      showBorder('middle-border','solid');
+    }
+
+    function showBorder(id,borderStyle) {
+      var borderImg = '';
+      if (borderStyle == 'solid') {
+          borderImg = 'lighted-border.png';
+      } else if (borderStyle == 'flash') {
+          borderImg = 'lighted-border.gif';
+      }
+
+      if (borderStyle=='none') {
+        receiverWin.document.getElementById(id).style.backgroundImage = "url('none')";
+      } else {
+        receiverWin.document.getElementById(id).style.backgroundImage = "url('" + borderImg + "')";
+      }
+    }
+
+    function changeDie(place,number) {
+      var id = 'die' + place;
+      var dieImg = '';
+      if (number == 1) {
+          dieImg = 'dice1.png';
+      } else if (number == 2) {
+          dieImg = 'dice2.png';
+      } else if (number == 3) {
+          dieImg = 'dice3.png';
+      } else if (number == 4) {
+          dieImg = 'dice4.png';
+      } else if (number == 5) {
+          dieImg = 'dice5.png';
+      } else if (number == 6) {
+          dieImg = 'dice6.png';
+      }
+
+      if (number==0) {
+        receiverWin.document.getElementById(id).style.backgroundImage = "url('none')";
+      } else {
+        receiverWin.document.getElementById(id).style.backgroundImage = "url('" + dieImg + "')";
+        if (place == 1) {
+          if (place2 == number) {
+            changeDigit('top1-digit',number);
+            showBorder('top1-border','flash');
+            changeDigit('bottom1-digit',number);
+            showBorder('bottom1-border','flash');
+          } else if (number == 1) {
+            showBorder('top1-border','solid');
+          } else if (number == 1) {
+            showBorder('bottom1-border','solid');
+          } else {
+            //1 lower higher
+          }  
+        } else if (place == 2) {
+
+        } else if (place == 3) {
+
+        } else if (place == 4) {
+
+        }
+      }
+    }
 
   </script>
+</head>
+<body>
+    <p>
+      <button onclick="openReceiverWin()">Open Game Board</button>
+    </p>
 
+    <label for="price1">Price First Digit:</label><br>
+    <input type="text" id="price1" name="price1" maxlength="1" size="1"><br>
+    <label for="price2">Price Second Digit:</label><br>
+    <input type="text" id="price2" name="price2" maxlength="1" size="1"><br>
+    <label for="price3">Price Third Digit:</label><br>
+    <input type="text" id="price3" name="price3" maxlength="1" size="1"><br>
+    <label for="price4">Price Fourth Digit:</label><br>
+    <input type="text" id="price4" name="price4" maxlength="1" size="1"><br>
+    <label for="price5">Price Fifth Digit:</label><br>
+    <input type="text" id="price5" name="price5" maxlength="1" size="1"><br>
+     
+<p>
+  <button onclick="loadPrice()">Load Price</button>
+</p>
+<p>
+  <button onclick="showFirstDigit()">Show Digit 1</button>
+</p>
 
+<p>
+  Select Die 1 -  
+  <button onclick="changeDie(1,1)">1</button>
+  <button onclick="changeDie(1,2)">2</button>
+  <button onclick="changeDie(1,3)">3</button>
+  <button onclick="changeDie(1,4)">4</button>
+  <button onclick="changeDie(1,5)">5</button>
+  <button onclick="changeDie(1,6)">6</button>
+  <button onclick="changeDie(1,0)">Clear</button>
+</p>
+<p id="dig2" style="visibility: hidden;">
+  Digit 2 
+  <button onclick="showBorder('top1-border','solid')">Higher</button>
+  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+</p>
+<p>
+  Select Die 2 -  
+  <button onclick="changeDie(2,1)">1</button>
+  <button onclick="changeDie(2,2)">2</button>
+  <button onclick="changeDie(2,3)">3</button>
+  <button onclick="changeDie(2,4)">4</button>
+  <button onclick="changeDie(2,5)">5</button>
+  <button onclick="changeDie(2,6)">6</button>
+  <button onclick="changeDie(2,0)">Clear</button>
+</p>
+<p id="dig3" style="visibility: hidden;">
+  Digit 3 
+  <button onclick="showBorder('top1-border','solid')">Higher</button>
+  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+</p>
+<p>
+  Select Die 3 -  
+  <button onclick="changeDie(3,1)">1</button>
+  <button onclick="changeDie(3,2)">2</button>
+  <button onclick="changeDie(3,3)">3</button>
+  <button onclick="changeDie(3,4)">4</button>
+  <button onclick="changeDie(3,5)">5</button>
+  <button onclick="changeDie(3,6)">6</button>
+  <button onclick="changeDie(3,0)">Clear</button>
+</p>
+<p id="dig4" style="visibility: hidden;">
+  Digit 4 
+  <button onclick="showBorder('top1-border','solid')">Higher</button>
+  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+</p>
+<p>
+  Select Die 4 -  
+  <button onclick="changeDie(4,1)">1</button>
+  <button onclick="changeDie(4,2)">2</button>
+  <button onclick="changeDie(4,3)">3</button>
+  <button onclick="changeDie(4,4)">4</button>
+  <button onclick="changeDie(4,5)">5</button>
+  <button onclick="changeDie(4,6)">6</button>
+  <button onclick="changeDie(4,0)">Clear</button>
+</p>
+<p id="dig5" style="visibility: hidden;">
+  Digit 5 
+  <button onclick="showBorder('top1-border','solid')">Higher</button>
+  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+</p>
 </body>
 </html>

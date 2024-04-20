@@ -195,58 +195,31 @@
             overflow: hidden;
         }
     </style>
-    <script>
-        
-    </script>
 </head>
 <body>
     <div id="main"><img src="dice_back.png"></div>
-    <div id="top1-border"><img src="lighted-border.gif"></div>
-    <div id="top1-digit"><img src="one.png"></div>
-    <div id="top2-border"><img src="lighted-border.gif"></div>
-    <div id="top2-digit"><img src="two.png"></div>
-    <div id="top3-border"><img src="lighted-border.gif"></div>
-    <div id="top3-digit"><img src="two.png"></div>
-    <div id="top4-border"><img src="lighted-border.gif"></div>
-    <div id="top4-digit"><img src="two.png"></div>
-    <div id="middle-border"><img src="lighted-border.gif"></div>
-    <div id="middle-digit"><img src="two.png"></div>
-    <div id="die1"><img src="dice6.png"></div>
-    <div id="die2"><img src="dice6.png"></div>
-    <div id="die3"><img src="dice6.png"></div>
-    <div id="die4"><img src="dice6.png"></div>
-    <div id="bottom1-border"><img src="lighted-border.gif"></div>
-    <div id="bottom1-digit"><img src="two.png"></div>
-    <div id="bottom2-border"><img src="lighted-border.gif"></div>
-    <div id="bottom2-digit"><img src="two.png"></div>
-    <div id="bottom3-border"><img src="lighted-border.gif"></div>
-    <div id="bottom3-digit"><img src="two.png"></div>
-    <div id="bottom4-border"><img src="lighted-border.gif"></div>
-    <div id="bottom4-digit"><img src="two.png"></div>
+    <div id="top1-border"></div>
+    <div id="top1-digit"></div>
+    <div id="top2-border"></div>
+    <div id="top2-digit"></div>
+    <div id="top3-border"></div>
+    <div id="top3-digit"></div>
+    <div id="top4-border"></div>
+    <div id="top4-digit"></div>
+    <div id="middle-border"></div>
+    <div id="middle-digit"></div>
+    <div id="die1"></div>
+    <div id="die2"></div>
+    <div id="die3"></div>
+    <div id="die4"></div>
+    <div id="bottom1-border"></div>
+    <div id="bottom1-digit"></div>
+    <div id="bottom2-border"></div>
+    <div id="bottom2-digit"></div>
+    <div id="bottom3-border"></div>
+    <div id="bottom3-digit"></div>
+    <div id="bottom4-border"></div>
+    <div id="bottom4-digit"></div>
 
-
-    <div id="displayText"></div>
-
-    <script>
-        window.addEventListener("message", receiveMessage, false);
-
-        function receiveMessage(event) {
-            alert("Message received: " + event.data);
-        }
-    </script>
-
-<!--
-    <script>
-        window.addEventListener('message', receiveMessage, false);
-
-        function receiveMessage(event) {
-            if (event.data && event.data.type === 'text') {
-                var displayText = document.getElementById('displayText');
-                displayText.innerHTML = 'Received Text: ' + event.data.data;
-                alert('Received Text: ' + event.data.data);
-            }
-        }
-    </script>
-    -->
 </body>
 </html>
