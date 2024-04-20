@@ -1,0 +1,19 @@
+<!--origin2.html-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Origin 2</title>
+</head>
+<body>
+  <script>
+    window.addEventListener('message', receiveMessage, false);
+
+    function receiveMessage(event) {
+      
+        alert('Received message: ' + event.data);
+      
+    }
+  </script>
+</body>
+</html>

@@ -49,11 +49,26 @@
           <td><button>6</button></td>
         </tr>
       </table>
-    
+      <input type="text" id="messageInput" placeholder="Enter your message">
+    <button onclick="openSenderPopup()">Open Sender</button>
+
+    <script>
+        var senderPopup;
+
+        function openSenderPopup() {
+            senderPopup = window.open("sender.html", "senderPopup", "width=400,height=400");
+        }
+
+        function sendMessage() {
+            var messageInput = document.getElementById("messageInput");
+            var message = messageInput.value;
+            senderPopup.postMessage(message, "*");
+        }
+    </script>
       
 
   <script>
-    function sendMessage(target,value) {
+    function OLDsendMessage(target,value) {
       const otherWindow = window.open('receiver.html');
       const message = document.getElementById('textInput').value;
       const targetOrigin = 'https://github.com.com';
