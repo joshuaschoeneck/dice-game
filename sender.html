@@ -34,6 +34,14 @@
     var price3;
     var price4;
     var price5;
+    var die1;
+    var die2;
+    var die3;
+    var die4;
+    var hilo1;
+    var hilo2;
+    var hilo3;
+    var hilo4;
     function openReceiverWin() {
       receiverWin = open('receiver.html');
             }
@@ -71,6 +79,7 @@
       price3 = document.getElementById('price3').value;
       price4 = document.getElementById('price4').value;
       price5 = document.getElementById('price5').value;
+      document.getElementById('displayPrice').innerHTML = price1 + price2 + price3 + price4 + price5;
     }
 
     function showFirstDigit() {
@@ -112,31 +121,267 @@
 
       if (number==0) {
         receiverWin.document.getElementById(id).style.backgroundImage = "url('none')";
+        changeDigit('top'+place+'-digit',0);
+        showBorder('top'+place+'-border','none');
+        changeDigit('bottom'+place+'-digit',0);
+        showBorder('bottom'+place+'-border','none');
+        if (place == 1) {
+          die1 = 0;
+      } else if (place == 2) {
+          die2 = 0;
+      } else if (place == 3) {
+          die3 = 0;
+      } else if (place == 4) {
+          die4 = 0;
+      }
       } else {
         receiverWin.document.getElementById(id).style.backgroundImage = "url('" + dieImg + "')";
         if (place == 1) {
-          if (place2 == number) {
+          die1 = number;
+          changeDigit('top1-digit',0);
+          showBorder('top1-border','none');
+          changeDigit('bottom1-digit',0);
+          showBorder('bottom1-border','none');
+          document.getElementById('dig2').style.visibility = 'hidden';
+          if (price2 == number) {
             changeDigit('top1-digit',number);
             showBorder('top1-border','flash');
             changeDigit('bottom1-digit',number);
             showBorder('bottom1-border','flash');
           } else if (number == 1) {
             showBorder('top1-border','solid');
-          } else if (number == 1) {
+            hilo1 = 'higher';
+          } else if (number == 6) {
             showBorder('bottom1-border','solid');
+            hilo1 = 'lower';
           } else {
-            //1 lower higher
+            document.getElementById('dig2').style.visibility = 'visible';
           }  
         } else if (place == 2) {
+          die2 = number;
+          changeDigit('top2-digit',0);
+          showBorder('top2-border','none');
+          changeDigit('bottom2-digit',0);
+          showBorder('bottom2-border','none');
+          document.getElementById('dig3').style.visibility = 'hidden';
+          if (price3 == number) {
+            changeDigit('top2-digit',number);
+            showBorder('top2-border','flash');
+            changeDigit('bottom2-digit',number);
+            showBorder('bottom2-border','flash');
+          } else if (number == 1) {
+            showBorder('top2-border','solid');
+            hilo2 = 'higher';
+          } else if (number == 6) {
+            showBorder('bottom2-border','solid');
+            hilo2 = 'lower';
+          } else {
+            document.getElementById('dig3').style.visibility = 'visible';
+          }  
 
         } else if (place == 3) {
+          die3 = number;
+          changeDigit('top3-digit',0);
+          showBorder('top3-border','none');
+          changeDigit('bottom3-digit',0);
+          showBorder('bottom3-border','none');
+          document.getElementById('dig4').style.visibility = 'hidden';
+          if (price4 == number) {
+            changeDigit('top3-digit',number);
+            showBorder('top3-border','flash');
+            changeDigit('bottom3-digit',number);
+            showBorder('bottom3-border','flash');
+          } else if (number == 1) {
+            showBorder('top3-border','solid');
+            hilo3 = 'higher';
+          } else if (number == 6) {
+            showBorder('bottom3-border','solid');
+            hilo3 = 'lower';
+          } else {
+            document.getElementById('dig4').style.visibility = 'visible';
+          }  
 
         } else if (place == 4) {
+          die4 = number;
+          changeDigit('top4-digit',0);
+          showBorder('top4-border','none');
+          changeDigit('bottom4-digit',0);
+          showBorder('bottom4-border','none');
+          document.getElementById('dig5').style.visibility = 'hidden';
+          if (price5 == number) {
+            changeDigit('top4-digit',number);
+            showBorder('top4-border','flash');
+            changeDigit('bottom4-digit',number);
+            showBorder('bottom4-border','flash');
+          } else if (number == 1) {
+            showBorder('top4-border','solid');
+            hilo4 = 'higher';
+          } else if (number == 6) {
+            showBorder('bottom4-border','solid');
+            hilo4 = 'lower';
+          } else {
+            document.getElementById('dig5').style.visibility = 'visible';
+          }  
 
         }
       }
     }
 
+    function higherLower(place,hilo) {
+      if (place == 1 && hilo == "higher") {
+        showBorder('top1-border','solid');
+        showBorder('bottom1-border','none');
+        hilo1 = 'higher';
+      } else if (place == 1 && hilo == "lower") {
+        showBorder('top1-border','none');
+        showBorder('bottom1-border','solid');
+        hilo1 = 'lower';
+      } else if (place == 1 && hilo == "none") {
+        showBorder('top1-border','none');
+        showBorder('bottom1-border','none');
+        hilo1 = '';
+      } else if (place == 2 && hilo == "higher") {
+        showBorder('top2-border','solid');
+        showBorder('bottom2-border','none');
+        hilo2 = 'higher';
+      } else if (place == 2 && hilo == "lower") {
+        showBorder('top2-border','none');
+        showBorder('bottom2-border','solid'); 
+        hilo2 = 'lower';
+      } else if (place == 2 && hilo == "none") {
+        showBorder('top2-border','none');
+        showBorder('bottom2-border','none');
+        hilo2 = '';
+      } else if (place == 3 && hilo == "higher") {
+        showBorder('top3-border','solid');
+        showBorder('bottom3-border','none');
+        hilo3 = 'higher';
+      } else if (place == 3 && hilo == "lower") {
+        showBorder('top3-border','none');
+        showBorder('bottom3-border','solid'); 
+        hilo3 = 'lower';
+      } else if (place == 3 && hilo == "none") {
+        showBorder('top3-border','none');
+        showBorder('bottom3-border','none');
+        hilo3 = '';
+      } else if (place == 4 && hilo == "higher") {
+        showBorder('top4-border','solid');
+        showBorder('bottom4-border','none');
+        hilo4 = 'higher';
+      } else if (place == 4 && hilo == "lower") {
+        showBorder('top4-border','none');
+        showBorder('bottom4-border','solid'); 
+        hilo4 = 'lower';
+      } else if (place == 4 && hilo == "none") {
+        showBorder('top4-border','none');
+        showBorder('bottom4-border','none');
+        hilo4 = '';
+      }
+
+      
+    }
+
+    function reveal(place) {
+      if (place==2) {
+        if (price2 < die1) {
+          changeDigit('bottom1-digit',price2);
+          if (hilo1 == 'lower') {
+            showBorder('bottom1-border','flash');
+          } 
+        } else {
+          changeDigit('top1-digit',price2);
+          if (hilo1 == 'higher') {
+            showBorder('top1-border','flash');
+          } 
+        }
+      }
+
+      if (place==3) {
+        if (price3 < die2) {
+          changeDigit('bottom2-digit',price3);
+          if (hilo2 == 'lower') {
+            showBorder('bottom2-border','flash');
+          } 
+        } else {
+          changeDigit('top2-digit',price3);
+          if (hilo2 == 'higher') {
+            showBorder('top2-border','flash');
+          } 
+        }
+      }
+
+      if (place==4) {
+        if (price4 < die3) {
+          changeDigit('bottom3-digit',price4);
+          if (hilo3 == 'lower') {
+            showBorder('bottom3-border','flash');
+          } 
+        } else {
+          changeDigit('top3-digit',price4);
+          if (hilo3 == 'higher') {
+            showBorder('top3-border','flash');
+          } 
+        }
+      }
+
+      if (place==5) {
+        if (price5 < die4) {
+          changeDigit('bottom4-digit',price5);
+          if (hilo4 == 'lower') {
+            showBorder('bottom4-border','flash');
+          } 
+        } else {
+          changeDigit('top4-digit',price5);
+          if (hilo4 == 'higher') {
+            showBorder('top4-border','flash');
+          } 
+        }
+      }
+    }
+
+    function reset() {
+      price1 = 0;
+      price2 = 0;
+      price3 = 0;
+      price4 = 0;
+      price5 = 0;
+      die1 = 0;
+      die2 = 0;
+      die3 = 0;
+      die4 = 0;
+      hilo1 = '';
+      hilo2 = '';
+      hilo3 = '';
+      hilo4 = '';
+
+      changeDigit('top1-digit',0);
+      showBorder('top1-border','none');
+      changeDigit('bottom1-digit',0);
+      showBorder('bottom1-border','none');
+
+      changeDigit('top2-digit',0);
+      showBorder('top2-border','none');
+      changeDigit('bottom2-digit',0);
+      showBorder('bottom2-border','none');
+      
+      changeDigit('top3-digit',0);
+      showBorder('top3-border','none');
+      changeDigit('bottom3-digit',0);
+      showBorder('bottom3-border','none');
+
+      changeDigit('top4-digit',0);
+      showBorder('top4-border','none');
+      changeDigit('bottom4-digit',0);
+      showBorder('bottom4-border','none');
+
+      changeDigit('middle-digit',0);
+      showBorder('middle-border','none');
+
+      changeDie(1,0)
+      changeDie(2,0)
+      changeDie(3,0)
+      changeDie(4,0)
+    }
   </script>
 </head>
 <body>
@@ -156,7 +401,7 @@
     <input type="text" id="price5" name="price5" maxlength="1" size="1"><br>
      
 <p>
-  <button onclick="loadPrice()">Load Price</button>
+  <button onclick="loadPrice()">Load Price</button> <div id="displayPrice"></div>
 </p>
 <p>
   <button onclick="showFirstDigit()">Show Digit 1</button>
@@ -174,8 +419,9 @@
 </p>
 <p id="dig2" style="visibility: hidden;">
   Digit 2 
-  <button onclick="showBorder('top1-border','solid')">Higher</button>
-  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+  <button onclick="higherLower(1,'higher')">Higher</button>
+  <button onclick="higherLower(1,'lower')">Lower</button>
+  <button onclick="higherLower(1,'none')">Clear</button>
 </p>
 <p>
   Select Die 2 -  
@@ -189,8 +435,9 @@
 </p>
 <p id="dig3" style="visibility: hidden;">
   Digit 3 
-  <button onclick="showBorder('top1-border','solid')">Higher</button>
-  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+  <button onclick="higherLower(2,'higher')">Higher</button>
+  <button onclick="higherLower(2,'lower')">Lower</button>
+  <button onclick="higherLower(2,'none')">Clear</button>
 </p>
 <p>
   Select Die 3 -  
@@ -204,8 +451,9 @@
 </p>
 <p id="dig4" style="visibility: hidden;">
   Digit 4 
-  <button onclick="showBorder('top1-border','solid')">Higher</button>
-  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+  <button onclick="higherLower(3,'higher')">Higher</button>
+  <button onclick="higherLower(3,'lower')">Lower</button>
+  <button onclick="higherLower(3,'none')">Clear</button>
 </p>
 <p>
   Select Die 4 -  
@@ -219,8 +467,27 @@
 </p>
 <p id="dig5" style="visibility: hidden;">
   Digit 5 
-  <button onclick="showBorder('top1-border','solid')">Higher</button>
-  <button onclick="showBorder('bottom1-border','solid')">Lower</button>
+  <button onclick="higherLower(4,'higher')">Higher</button>
+  <button onclick="higherLower(4,'lower')">Lower</button>
+  <button onclick="higherLower(4,'none')">Clear</button>
+</p>
+<p>
+  <button onclick="reveal(2)">Reveal Digit 2</button>
+</p>
+<p>
+  <button onclick="reveal(3)">Reveal Digit 3</button>
+</p>
+<p>
+  <button onclick="reveal(4)">Reveal Digit 4</button>
+</p>
+<p>
+  <button onclick="reveal(5)">Reveal Digit 5</button>
+</p>
+<p>
+  <br>
+  <br>
+  <br>
+  <button onclick="reset()">Reset</button>
 </p>
 </body>
 </html>
